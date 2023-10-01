@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build:client": "cd client && npm install && npm run build",
+    "build:prod": "npm run build:client && npm install",
+    "start:prod": "npm run start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/server.js",
     "dev": "nodemon src/server.js"
