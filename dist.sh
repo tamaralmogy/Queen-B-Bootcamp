@@ -10,7 +10,7 @@ fi
 cp -r src dist/
 
 # Copy the client folder and its content to the dist folder
-cp -r client/build dist/
+cp -r client/build dist/client
 
 # Copy the package.json to the dist folder
 cp -r package.json package-lock.json dist/
