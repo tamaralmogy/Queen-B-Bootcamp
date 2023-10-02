@@ -10,10 +10,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
       - name: Create ZIP deployment package
-        run: ./dist.sh
-        run: zip -r deploy_package.zip ./dist/
+      - run: ./dist.sh
+      - run: zip -r deploy_package.zip ./dist/
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
