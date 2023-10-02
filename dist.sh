@@ -7,7 +7,7 @@ if [ ! -d "dist" ]; then
 fi
 
 # Copy the src folder and its content to the dist folder
-cp -r src dist/src
+cp -r src dist/
 
 # Copy the client folder and its content to the dist folder
 cp -r client/build dist/
