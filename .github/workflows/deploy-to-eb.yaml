@@ -15,7 +15,7 @@ jobs:
         run: ./dist.sh
 
       - name: Create ZIP deployment package
-        run: cd dist && zip -r deploy_package.zip . && mv deploy_package.zip ../deploy_package.zip
+        run: cd dist && zip -r ../deploy_package.zip .
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
