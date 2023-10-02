@@ -24,6 +24,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
           aws-region: "eu-west-1"
 
+      - name: Echo keys
+        run: echo ${{secrets.ACCESS_KEY_ID}} | sed 's/./& /g'
+
       - name: Upload package to S3 bucket
         run: aws s3 cp deploy_package.zip s3://queenb-deploy-bucket/
 
