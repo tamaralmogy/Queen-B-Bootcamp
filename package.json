@@ -2,6 +2,7 @@
   "name": "server",
   "version": "1.0.1",
   "description": "",
+  "type":"commonjs",
   "main": "index.js",
   "scripts": {
     "build:client": "cd client && npm install --no-audit && npm run build",
