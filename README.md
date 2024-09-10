@@ -91,7 +91,7 @@ https://codedamn.com/news/reactjs/how-to-connect-react-with-node-js
 
 
 
-### Running a local Postgres database
+## Running a local Postgres database
 
 * install Docker - https://docs.docker.com/engine/install/
 * open the docker
@@ -104,7 +104,7 @@ docker run --name qb-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432
 For More info - https://www.dbvis.com/thetable/how-to-set-up-postgres-using-docker/
 
 
-# Connect to your DB 
+### Connect to your DB from the server 
 
 To connect to the db use the following paramaters:
 
