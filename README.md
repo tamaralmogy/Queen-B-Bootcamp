@@ -112,7 +112,8 @@ To connect to the db use the following paramaters:
 * Port: 5432
 * Database: your database (here - qb-postgres)
 
-  You can use the third party library - pg
+  You can use the third party library - pg.
+  
   [Postgres Instructions](https://help.scalegrid.io/docs/postgresql-connecting-to-nodejs-driver)
 
   
