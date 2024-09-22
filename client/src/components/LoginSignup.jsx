@@ -22,8 +22,32 @@ const LoginSignup = () => {
   };
 
   // Handle form submission
-  const handleSubmit = () => {
-    // For testing
+  const handleSignup = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await fetch("http://localhost:5001/api/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          password: formData.password,
+          role: formData.role,
+        }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        console.log("User created:", data);
+      } else {
+        console.log("Signup failed:", data.error);
+      }
+    } catch (error) {
+      console.error("Network error:", error);
+    }
+
     console.log(formData);
   };
 
@@ -108,8 +132,9 @@ const LoginSignup = () => {
       <div className="submit-container">
         <div
           className={action === "Login" ? "submit gray" : "submit"}
-          onClick={() => {
+          onClick={(event) => {
             setAction("Sign Up");
+            handleSignup(event);
           }}
         >
           Sign Up
