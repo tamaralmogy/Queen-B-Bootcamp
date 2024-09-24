@@ -5,6 +5,19 @@ import user_icon from "../Assets/person.png";
 import email_icon from "../Assets/email.png";
 import password_icon from "../Assets/password.png";
 
+const InputField = ({ type, name, placeholder, value, onChange, icon }) => (
+  <div className="input">
+    {icon && <img src={icon} alt="" />}
+    <input
+      type={type}
+      name={name}
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+    />
+  </div>
+);
+
 const LoginSignup = () => {
   // Initalize variable && function for signing up
   const [action, setAction] = useState("Login");
@@ -24,20 +37,27 @@ const LoginSignup = () => {
   // Handle form submission
   const handleSignup = async (event) => {
     event.preventDefault();
+
+    if (
+      !formData.firstName ||
+      !formData.lastName ||
+      !formData.email ||
+      !formData.password
+    ) {
+      alert("All fields are required!");
+      return;
+    }
+
     try {
       const response = await fetch("http://localhost:5001/api/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          email: formData.email,
-          password: formData.password,
-          role: formData.role,
-        }),
+        body: JSON.stringify(formData),
       });
+
+      // Check that response is OK
       const data = await response.json();
       if (response.ok) {
         console.log("User created:", data);
@@ -57,36 +77,29 @@ const LoginSignup = () => {
         <div className="text">{action}</div>
         <div className="underline"></div>
       </div>
+
       <div className="inputs">
         {action === "Login" ? (
           <div></div>
         ) : (
           <>
-            {/* First Name */}
-            <div className="input">
-              <img src={user_icon} alt="" />
-              <input
-                type="text"
-                name="firstName"
-                placeholder="First Name"
-                value={formData.firstName}
-                onChange={handleChange}
-              />
-            </div>
+            <InputField
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              value={formData.firstName}
+              onChange={handleChange}
+              icon={user_icon}
+            />
+            <InputField
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              value={formData.lastName}
+              onChange={handleChange}
+              icon={user_icon}
+            />
 
-            {/* Last Name */}
-            <div className="input">
-              <img src={user_icon} alt="" />
-              <input
-                type="text"
-                name="lastName"
-                placeholder="Last Name"
-                value={formData.lastName}
-                onChange={handleChange}
-              />
-            </div>
-
-            {/* Mentor/Mentee Selection */}
             <div className="input">
               <label>Are you a Mentor or Mentee?</label>
               <select name="role" value={formData.role} onChange={handleChange}>
@@ -97,56 +110,58 @@ const LoginSignup = () => {
           </>
         )}
 
-        {/* Email Section */}
-        <div className="input">
-          <img src={email_icon} alt="" />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </div>
-
-        {/* Password Section */}
-        <div className="input">
-          <img src={password_icon} alt="" />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-        </div>
+        <InputField
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          icon={email_icon}
+        />
       </div>
-      {action === "Sign Up" ? (
-        <div></div>
-      ) : (
+
+      <InputField
+        type="password"
+        name="password"
+        placeholder="Password"
+        value={formData.password}
+        onChange={handleChange}
+        icon={password_icon}
+      />
+      {action === "Login" && (
         <div className="forgot-password">
           Forgot Password? <span>Click Here!</span>
         </div>
       )}
 
       <div className="submit-container">
-        <div
-          className={action === "Login" ? "submit gray" : "submit"}
-          onClick={(event) => {
-            setAction("Sign Up");
-            handleSignup(event);
-          }}
-        >
-          Sign Up
-        </div>
-        <div
-          className={action === "Sign Up" ? "submit gray" : "submit"}
-          onClick={() => {
-            setAction("Login");
-          }}
-        >
-          Login
-        </div>
+        {action === "Sign Up" ? (
+          <button
+            className="submit"
+            onClick={handleSignup} // This triggers the form submission
+          >
+            Submit
+          </button>
+        ) : (
+          <>
+            <div
+              className="submit gray"
+              onClick={() => {
+                setAction("Sign Up");
+              }}
+            >
+              Sign Up
+            </div>
+            <div
+              className={action === "Sign Up" ? "submit gray" : "submit"}
+              onClick={() => {
+                setAction("Login");
+              }}
+            >
+              Login
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
