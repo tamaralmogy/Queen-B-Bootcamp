@@ -5,6 +5,9 @@ import firstPerson from './images/person1.svg';
 import Header from './components/Header';
 import './App.css';
 import MentorCard from './components/MentorCard';
+import MentorInfo from './components/MentorInfo';
+const port = process.env.PORT || 5001;
+
 import SearchBar from './components/SearchBar';  // Import the SearchBar component
 import Footer from './components/Footer';
 import {
@@ -25,8 +28,6 @@ import SignUp from "./components/SignUp";
 // import "./App.css";
 // import MentorCard from "./components/MentorCard";
 // const port = process.env.PORT || 5001;
-
-import "./App.css";
 
 function App() {
   const [mentors, setMentors] = useState([]);
@@ -71,6 +72,35 @@ function App() {
   //     <Footer/>
   //   </div>
   return (
+
+//     <div className="App">
+//       <Header/>
+      
+//       {/* add here upcoming events*/}
+
+//       <input 
+//           type="text" 
+//           placeholder="Search by name or skill"
+//           className="search-bar"
+//         />
+
+//       <div className="mentor-list">
+//         {/* must pass on the database records and add as needed */}
+//         <MentorCard name="Haya" />
+//         <MentorCard name="Haya2" />
+//         <MentorCard name="Haya3" />
+//       </div>
+
+    
+//       <h1>{message}</h1>
+//       <img src={firstPerson} alt="person1" />
+//       <br/>
+
+//       <MentorInfo id={1} />
+
+//       <div><h1>popup</h1></div>
+//     </div>
+
     <Router>
       <Routes>
         {/* Default route - redirect to login */}
@@ -85,5 +115,5 @@ function App() {
     </Router>
   );
 }
-
+    
 export default App;
