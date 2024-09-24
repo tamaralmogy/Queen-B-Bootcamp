@@ -1,22 +1,4 @@
-// import React from 'react';
-// import '../App.css';
 
-// const SearchBar = ({ searchQuery, setSearchQuery }) => {
-//   return (
-//     <input 
-//       type="text" 
-//       placeholder="Search by name, skill, or field"
-//       className="search-bar"
-//       value={searchQuery}
-//       onChange={(e) => setSearchQuery(e.target.value)}  // Update search query as user types
-//     />
-//   );
-// };
-
-// export default SearchBar;
-
-
-// components/SearchBar.js
 import React, { useState } from 'react';
 import '../App.css';
 
