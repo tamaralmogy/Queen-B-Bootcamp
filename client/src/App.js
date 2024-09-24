@@ -5,7 +5,6 @@ import Header from './components/Header';
 import './App.css';
 import MentorCard from './components/MentorCard';
 import MentorInfo from './components/MentorInfo';
-import './MentorInfo.css'; 
 const port = process.env.PORT || 5001;
 
 function App() {
