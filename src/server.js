@@ -24,7 +24,7 @@ const pool = new Pool({
 // Serve static files from React build
 app.use(express.json());
 // enables the server to serve the client app without running it
-app.use(express.static(path.join(__dirname, "../client/build")));
+//app.use(express.static(path.join(__dirname, "../client/build")));
 
 // Sign-Up Route
 app.post("/api/signup", async (req, res) => {
@@ -71,9 +71,9 @@ app.post("/api/signup", async (req, res) => {
 });
 
 // For testing
-app.get("/api/helloworld", (req, res) => {
-  res.send("Hello World");
-});
+//pp.get("/api/helloworld", (req, res) => {
+  //res.send("Hello World");
+
 
 // app.get("/*", (req, res) => {
 //   // res.send('Anything else');
@@ -115,9 +115,9 @@ app.get('/api/mentors', async (req, res) => {
 
 
 // Serve React app for all non-API routes
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-});
+//app.get('/*', (req, res) => {
+ // res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+//});
 
 // Start the server
 app.listen(port, () => {
