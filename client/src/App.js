@@ -4,6 +4,8 @@ import firstPerson from './images/person1.svg';
 import Header from './components/Header';
 import './App.css';
 import MentorCard from './components/MentorCard';
+import MentorInfo from './components/MentorInfo';
+import './MentorInfo.css'; 
 const port = process.env.PORT || 5001;
 
 function App() {
@@ -34,10 +36,18 @@ function App() {
         <MentorCard name="Haya3" />
       </div>
 
+    
       <h1>{message}</h1>
       <img src={firstPerson} alt="person1" />
+      <br/>
+
+      <MentorInfo id={1} />
+
+      <div><h1>popup</h1></div>
     </div>
   );
 }
+    
 
 export default App;
+
