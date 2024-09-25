@@ -4,6 +4,7 @@ import "./LoginSignup.css"; // Reuse CSS
 
 import email_icon from "../Assets/email.png";
 import password_icon from "../Assets/password.png";
+import queenB from "../Assets/queenB.jpg";
 
 const InputField = ({ type, name, placeholder, value, onChange, icon }) => (
   <div className="input">
@@ -51,7 +52,9 @@ const Login = () => {
       const data = await response.json();
       if (response.ok) {
         console.log("Login successful:", data);
+        navigate("/home");
       } else {
+        alert(data.error);
         console.log("Login failed:", data.error);
       }
     } catch (error) {
@@ -61,35 +64,43 @@ const Login = () => {
   };
 
   return (
-    <div className="container">
-      <div className="header">
-        <div className="text">Login</div>
-        <div className="underline"></div>
+    <div className="split-container">
+      {/* Left side for welcome-section */}
+      <div className="welcome-section">
+        <img src={queenB} alt="Company Logo" className="logo" />
+        <h1>Welcome to our Platform</h1>
+        <p>Join us and explore opportunities as a mentor or mentee.</p>
       </div>
-      <div className="inputs">
-        <InputField
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          icon={email_icon}
-        />
-        <InputField
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          icon={password_icon}
-        />
-      </div>
-      <div className="submit-container">
-        <button className="submit" onClick={handleLogin}>
-          Login
-        </button>
-        <div className="submit gray" onClick={() => navigate("/signup")}>
-          Sign Up
+      <div className="login-section">
+        <div className="header">
+          <div className="text">Login</div>
+          <div className="underline"></div>
+        </div>
+        <div className="inputs">
+          <InputField
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            icon={email_icon}
+          />
+          <InputField
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+            icon={password_icon}
+          />
+        </div>
+        <div className="submit-container">
+          <button className="submit" onClick={handleLogin}>
+            Login
+          </button>
+          <div className="submit gray" onClick={() => navigate("/signup")}>
+            Sign Up
+          </div>
         </div>
       </div>
     </div>

@@ -1,9 +1,8 @@
-const express = require('express');
-const cors = require('cors');
-const path = require('path');
-const { Pool } = require('pg');
-require('dotenv').config();
-// const bcrypt = require("bcrypt");
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
+const { Pool } = require("pg");
+// require('dotenv').config();
 const { v4: uuidv4 } = require("uuid");
 const port = process.env.PORT || 5001;
 
@@ -24,7 +23,7 @@ const pool = new Pool({
 // Serve static files from React build
 app.use(express.json());
 // enables the server to serve the client app without running it
-//app.use(express.static(path.join(__dirname, "../client/build")));
+app.use(express.static(path.join(__dirname, "../client/build")));
 
 // Sign-Up Route
 app.post("/api/signup", async (req, res) => {
@@ -70,19 +69,42 @@ app.post("/api/signup", async (req, res) => {
   }
 });
 
-// For testing
-//pp.get("/api/helloworld", (req, res) => {
-  //res.send("Hello World");
+app.post("/api/login", async (req, res) => {
+  const { email, password } = req.body;
 
+  if (!email || !password) {
+    return res.status(400).json({ error: "Email and password are required " });
+  }
 
-// app.get("/*", (req, res) => {
-//   // res.send('Anything else');
-//   res.sendFile(path.join(__dirname, "../client/build", "index.html"));
-// });
+  try {
+    // Check if user exists
+    const userResult = await pool.query(
+      "SELECT * FROM users WHERE email = $1",
+      [email]
+    );
+    console.log(userResult);
+    if (userResult.rows.length === 0) {
+      return res.status(400).json({ error: "Email or password incorrect" });
+    }
 
-app.get('/api/mentors', async (req, res) => {
+    const user = userResult.rows[0];
+
+    // Make sure password matches
+    if (user.password !== password) {
+      return res.status(400).json({ error: "Password incorrect" });
+    }
+
+    // If Login succesful, respond with user data
+    res.status(200).json({ message: "Login successful", user });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+app.get("/api/mentors", async (req, res) => {
   const { search } = req.query; // Get the 'search' query parameter from the request
-  
+
   try {
     // Base SQL query to get all mentors
     let query = `
@@ -108,16 +130,10 @@ app.get('/api/mentors', async (req, res) => {
 
     res.json(result.rows); // Send back the filtered mentor data
   } catch (error) {
-    console.error('Error fetching mentors:', error.message);
-    res.status(500).json({ error: 'Database error' });
+    console.error("Error fetching mentors:", error.message);
+    res.status(500).json({ error: "Database error" });
   }
 });
-
-
-// Serve React app for all non-API routes
-//app.get('/*', (req, res) => {
- // res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-//});
 
 // Start the server
 app.listen(port, () => {

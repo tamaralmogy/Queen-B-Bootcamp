@@ -98,3 +98,56 @@
   background: #eaeaea;
   color: #676767;
 }
+.split-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Left side (welcome section */
+.welcome-section {
+  flex: 1;
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.welcome-section h1 {
+  font-size: 3rem;
+  color: #333;
+}
+
+.welcome-section p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.login-section {
+  flex: 1;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.header .text {
+  font-size: 2rem;
+}
+
+.inputs {
+  margin-top: 20px;
+}
+
+.submit-container {
+  margin-top: 20px;
+}
+
+/* Style for the logo */
+.logo {
+  width: 150px; /* Adjust the size as needed */
+  margin-bottom: 20px; /* Add spacing below the logo */
+}
