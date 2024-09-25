@@ -21,6 +21,7 @@ app.use(express.static(path.join(__dirname, "../client/build")));
 // Use routes
 app.use("/api", authRoutes); // Handles /api/signup and /api/login
 app.use("/api", mentorRoutes); // Handles /api/mentors
+app.use("/api", authRoutes);
 
 // Fallback route for React
 app.get("/*", (req, res) => {

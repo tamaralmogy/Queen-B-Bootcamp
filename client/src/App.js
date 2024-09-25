@@ -9,6 +9,7 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import HomePage from "./components/HomePage";
 import "./App.css";
+import ForgotPassword from "./components/ForgotPassword";
 
 function App() {
   return (
@@ -24,10 +25,12 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
 
         {/* Signup Route */}
-        <Route path="/home" element={<HomePage />} />    
+        <Route path="/home" element={<HomePage />} />
 
+        {/* Forgot-Password Route */}
+        <Route path="/forgot-password" element={<ForgotPassword />} />
       </Routes>
-      </Router>
+    </Router>
   );
 }
 

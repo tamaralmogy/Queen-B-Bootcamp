@@ -102,6 +102,11 @@ const Login = () => {
             Sign Up
           </div>
         </div>
+        <div className="forgot-password">
+          <a href="#" onClick={() => navigate("/forgot-password")}>
+            Forgot Password?
+          </a>
+        </div>
       </div>
     </div>
   );

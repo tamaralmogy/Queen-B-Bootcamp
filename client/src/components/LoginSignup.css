@@ -151,3 +151,17 @@
   width: 150px; /* Adjust the size as needed */
   margin-bottom: 20px; /* Add spacing below the logo */
 }
+
+.forgot-password {
+  margin-top: 10px;
+  color: #666;
+}
+
+.forgot-password a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
