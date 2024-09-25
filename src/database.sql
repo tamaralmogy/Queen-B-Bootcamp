@@ -1,4 +1,4 @@
-CREATE TABLE "User" (
+CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     firstName VARCHAR(100),
     lastName VARCHAR(100),
@@ -7,7 +7,7 @@ CREATE TABLE "User" (
     role VARCHAR(50)
 );
 
-CREATE TABLE "Mentor" (
+CREATE TABLE mentors (
     id SERIAL PRIMARY KEY,
     userId INT REFERENCES "User" (id) ON DELETE CASCADE,  
     avatar VARCHAR(255),
