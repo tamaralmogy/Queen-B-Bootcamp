@@ -1,29 +1,28 @@
 .mentor-profile {
-    text-align: center;
-  }
-  
-  .mentor-name {
-    font-size: 2.5rem;
-    color: #ff69b4; /* Pink color for name */
-  }
-  
-  .mentor-languages,
-  .mentor-job {
-    font-size: 1.2rem;
-    margin: 10px 0;
-  }
-  
-  .mentor-contact {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 20px;
-  }
-  
-  .mentor-contact button {
-    font-size: 1.2rem;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-  }
-  
+  text-align: center;
+}
+
+.mentor-name {
+  font-size: 2.5rem;
+  color: #ff69b4; /* Pink color for name */
+}
+
+.mentor-languages,
+.mentor-job {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.mentor-contact {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 20px;
+}
+
+.mentor-contact button {
+  font-size: 1.2rem;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}

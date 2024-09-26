@@ -55,7 +55,6 @@ exports.forgotPassword = async (req, res) => {
 // Sign-up controller
 exports.signup = async (req, res) => {
   const { firstName, lastName, email, password, role } = req.body;
-  console.log("Received data:", { firstName, lastName, email, password, role });
 
   if (!firstName || !lastName || !email || !password) {
     return res.status(400).json({ error: "All fields are required" });
@@ -73,14 +72,14 @@ exports.signup = async (req, res) => {
 
     const newUser = await pool.query(
       "INSERT INTO users (id, first_name, last_name, email, password, role) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
-      [userId, firstName, lastName, email, password, role]
+      [userId, firstName, lastName, email, hashedPassword, role]
     );
 
     res
       .status(201)
       .json({ message: "User created successfully", user: newUser.rows[0] });
   } catch (error) {
-    console.error(error);
+    console.error("Login error:", error);
     res.status(500).json({ error: "Server error" });
   }
 };
@@ -108,9 +107,38 @@ exports.login = async (req, res) => {
       return res.status(400).json({ error: "Password incorrect" });
     }
 
-    res.status(200).json({ message: "Login successful", user });
+    res.status(200).json({
+      message: "Login successful",
+      user: {
+        id: user.id,
+        email: user.email,
+        role: user.role,
+      },
+    });
+    console.log("Login successful:", user);
   } catch (error) {
     console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
+// Get user role based on email
+exports.getUserRole = async (req, res) => {
+  const userEmail = req.user.email; // Assuming you're using some kind of authentication middleware
+
+  try {
+    const result = await pool.query("SELECT role FROM users WHERE email = $1", [
+      userEmail,
+    ]);
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    const role = result.rows[0].role;
+    console.log(role);
+    res.json({ role });
+  } catch (error) {
+    console.error("Error fetching user role:", error);
     res.status(500).json({ error: "Server error" });
   }
 };

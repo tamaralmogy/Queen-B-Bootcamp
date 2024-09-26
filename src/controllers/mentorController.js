@@ -1,33 +1,66 @@
-// controllers/mentorController.js
-const pool = require("../config");
+const { Pool } = require("pg");
 
-// Mentor search controller
+const pool = new Pool({
+  user: "postgres",
+  host: "localhost",
+  database: "postgres",
+  password: "mysecretpassword",
+  port: 5432,
+});
+
 exports.getMentors = async (req, res) => {
-  const { search } = req.query;
+  const { search, field, workplace } = req.query; // Added field and workplace as query parameters
 
   try {
+    // Base SQL query to get all mentors
     let query = `
       SELECT u.*, m.*
-      FROM "User" u
-      JOIN "Mentor" m ON u.id = m.userId
+      FROM "users" u
+      JOIN "mentors" m ON u.id = m.userId
     `;
 
+    const values = [];
+    const conditions = [];
+
+    // If there's a search query, append the WHERE clause to filter by name (firstName or lastName)
     if (search) {
-      query += `
-        WHERE
-          LOWER(u.firstName) ILIKE $1 OR
-          LOWER(u.lastName) ILIKE $1 OR
-          LOWER(m.field) ILIKE $1 OR
-          LOWER(m.languages) ILIKE $1
-      `;
+      conditions.push(`
+        (LOWER(u.firstName) ILIKE $${values.length + 1} OR
+         LOWER(u.lastName) ILIKE $${values.length + 1})
+      `);
+      values.push(`%${search.toLowerCase()}%`);
     }
 
-    const values = search ? [`%${search.toLowerCase()}%`] : [];
+    // Filter by field
+    if (field) {
+      conditions.push(`
+        LOWER(m.field) ILIKE $${values.length + 1}
+      `);
+      values.push(`%${field.toLowerCase()}%`);
+    }
+
+    // Filter by workplace
+    if (workplace) {
+      conditions.push(`
+        LOWER(m.workplace) ILIKE $${values.length + 1}
+      `);
+      values.push(`%${workplace.toLowerCase()}%`);
+    }
+
+    // If any conditions exist, append them to the query with WHERE
+    if (conditions.length > 0) {
+      query += " WHERE " + conditions.join(" AND ");
+    }
+
     const result = await pool.query(query, values);
 
-    res.json(result.rows);
+    if (result.rows.length === 0) {
+      return res.status(404).json({ message: "No mentors found" });
+    }
+
+    res.json(result.rows); // Send back the filtered mentor data
   } catch (error) {
-    console.error("Error fetching mentors:", error.message);
+    console.error("Error fetching mentors:", error);
     res.status(500).json({ error: "Database error" });
   }
 };

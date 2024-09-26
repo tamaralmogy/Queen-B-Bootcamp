@@ -1,0 +1,49 @@
+/* עיצוב שורת הניווט (Navbar) */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  padding: 10px 20px;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-around; /* מיקום הלינקים באופן שווה */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* צל קל */
+}
+
+/* עיצוב בסיסי ללינקים שנראים כמו כפתורים */
+.nav-link {
+  background-color: #ea4c89;
+  border-radius: 8px;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 16px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 200ms, transform 100ms;
+  display: inline-block;
+}
+
+/* עיצוב במעבר עכבר על הכפתור */
+.nav-link:hover,
+.nav-link:focus {
+  background-color: #f082ac;
+  transform: scale(1.05); /* מעט הגדלה על hover */
+}
+
+/* עיצוב הכפתורים בתוך שורת הניווט */
+.navbar .nav-link {
+  margin: 0 10px;
+}
+
+.navbar .nav-link:first-child {
+  margin-left: 0;
+}
+
+.navbar .nav-link:last-child {
+  margin-right: 0;
+}

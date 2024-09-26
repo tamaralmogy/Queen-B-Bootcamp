@@ -1,0 +1,132 @@
+.personal-info-page {
+  background: linear-gradient(135deg, #f4b4bf, #eb66be);
+  min-height: 100vh; /* גובה מינימלי של המסך כולו */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  background-color: rgba(240, 208, 228, 0.9);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 100%; /* התאמה לגודל המסך */
+}
+
+input.input-field {
+  width: 100%; /* שדה הקלט יתפרס על כל רוחב הקונטיינר */
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box; /* לוקח את ה-padding בחשבון */
+}
+
+button.submit-button {
+  width: auto; /* הכפתור יתפרס על כל הרוחב */
+  padding: 15px;
+  background-color: #f52691;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* כותרות משנה של השדות (labels) */
+.field-container label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #555; /* צבע כותרת משנה */
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* עיצוב יפה לכותרות המשנה במעבר עכבר */
+.field-container label:hover {
+  color: #f52691; /* שינוי צבע במעבר עכבר */
+  transition: color 0.3s ease;
+}
+
+/* עיצוב הכותרת הראשית של הטופס */
+.form-title {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  color: #333; /* צבע כהה נעים */
+  margin-bottom: 20px;
+  text-transform: uppercase; /* הכותרת באותיות גדולות */
+  letter-spacing: 1px; /* מרווח בין אותיות */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* צל עדין */
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f52691; /* קו תחתון צבעוני */
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Make sure the popup is on top */
+}
+
+.popup-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  width: 80%;
+  max-width: 500px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* Shadow for a 3D effect */
+  border: 3px solid #f52691; /* Border around the entire content */
+}
+
+.popup-content h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.popup-content p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.popup-content a {
+  font-family: "Montserrat", sans-serif;
+  color: #f52691;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.popup-content a:hover {
+  color: #a0458c; /* Hover effect for link */
+}
+
+button {
+  background-color: #f52691;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #a0458c;
+}

@@ -19,7 +19,7 @@ const InputField = ({ type, name, placeholder, value, onChange, icon }) => (
   </div>
 );
 
-const Login = () => {
+const Login = ({ userRoleChanged }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -52,6 +52,10 @@ const Login = () => {
       const data = await response.json();
       if (response.ok) {
         console.log("Login successful:", data);
+
+        // localStorage.setItem("role", data.user.role);
+        userRoleChanged(data.user.role);
+
         navigate("/home");
       } else {
         alert(data.error);
