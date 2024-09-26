@@ -1,24 +1,12 @@
-import React from "react";
+// import React from 'react';
 import "../App.css";
+import React from "react";
 
-function MentorCard({
-  firstName,
-  lastName,
-  avatar,
-  field,
-  workplace,
-  onClick,
-}) {
+function MentorCard({ fullname, avatar, field, workplace, onClick }) {
   return (
     <div className="mentor-card" onClick={onClick}>
-      <img
-        src={avatar}
-        alt={`${firstName} ${lastName}`}
-        style={{ width: "100%" }}
-      />
-      <h3>
-        {firstName} {lastName}
-      </h3>
+      <img src={avatar} alt={`${fullname}`} style={{ width: "100%" }} />
+      <h3>{fullname}</h3>
       <p>
         <strong>Field:</strong> {field}
       </p>
