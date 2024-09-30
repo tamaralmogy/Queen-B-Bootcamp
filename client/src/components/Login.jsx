@@ -54,6 +54,7 @@ const Login = ({ userRoleChanged }) => {
         console.log("Login successful:", data);
 
         // localStorage.setItem("role", data.user.role);
+        // setUserMail(formData.email);
         userRoleChanged(data.user.role);
 
         navigate("/home");
@@ -72,7 +73,7 @@ const Login = ({ userRoleChanged }) => {
       {/* Left side for welcome-section */}
       <div className="welcome-section">
         <img src={queenB} alt="Company Logo" className="logo" />
-        <h1>Welcome to our Platform</h1>
+        <h1>מתפתחות</h1>
         <p>Join us and explore opportunities as a mentor or mentee.</p>
       </div>
       <div className="login-section">

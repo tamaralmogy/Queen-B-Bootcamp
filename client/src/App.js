@@ -16,10 +16,16 @@ import Navbar from "./components/Navbar";
 
 function App() {
   const [userRole, setUserRole] = useState(null);
+  const [email, setUserEmail] = useState(null);
 
   //  setUserData state
   function onSetUserRole(user) {
     setUserRole(user);
+  }
+
+  // setUserData mail
+  function onSetUserMail(user) {
+    setUserEmail(user);
   }
 
   return (
@@ -29,7 +35,15 @@ function App() {
         {/* Default route - redirect to login */}
         <Route path="/" element={<Navigate to="/login" />} />
         {/* Login Route */}
-        <Route path="/login" element={<Login setUserRole={onSetUserRole} />} />
+        <Route
+          path="/login"
+          element={
+            <Login
+              userRoleChanged={onSetUserRole}
+              // setUserMail={onSetUserMail}
+            />
+          }
+        />
         {/* Signup Route */}
         <Route path="/signup" element={<SignUp />} />
         {/* Signup Route */}

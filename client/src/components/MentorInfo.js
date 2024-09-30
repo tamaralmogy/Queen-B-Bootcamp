@@ -25,7 +25,17 @@ function MentorProfile({ mentor }) {
   return (
     <div className="mentor-profile">
       <div className="mentor-details">
-        <img src={mentor.avatar} alt={`${mentor.fullname}`} />
+        <img
+          src="https://img.freepik.com/free-vector/cute-girl-hacker-operating-laptop-cartoon-vector-icon-illustration-people-technology-isolated-flat_138676-9487.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1727222400&semt=ais_hybrid"
+          alt={`${mentor.fullname}`}
+          style={{
+            width: "150px",
+            height: "150px",
+            borderRadius: "50%",
+            objectFit: "cover",
+            marginBottom: "15px",
+          }}
+        />
         <h2>{mentor.fullname}</h2>
         <p>
           <strong>Field:</strong> {mentor.field}
