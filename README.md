@@ -30,8 +30,36 @@ Ensure you have the following installed:
   ```
 2. Install dependencies:
 - For the server:
-```cd server
-npm install```
+```bash
+cd server
+npm install
+```
 - For the client:
-```cd client
-npm install```
+```bash
+cd client
+npm install
+```
+
+## Set up the PostgreSQL database:
+
+1. Create a new database in pgAdmin.
+2. Update the database connection configuration in the server's environment file (`.env`).
+
+## Start the development server:
+
+- Start the backend (server):
+  ```bash
+  npm start
+  ```
+- Start the frontend (client):
+  ```bash
+  cd client
+  npm start
+  ```
+## Usage
+Once the servers are running, you can access the application in your browser:
+
+- **Frontend**: [http://localhost:3000](http://localhost:3000)
+- **Backend**: [http://localhost:5000](http://localhost:5000)
+
+
