@@ -27,18 +27,19 @@ Ensure you have the following installed:
    ```bash
    git clone https://github.com/your-username/your-repo.git
    cd your-repo
-  ```
+   ```
 2. Install dependencies:
-- For the server:
-```bash
-cd server
-npm install
-```
-- For the client:
-```bash
-cd client
-npm install
-```
+   - For the server:
+     ```bash
+     cd server
+     npm install
+     ```
+   - For the client:
+     ```bash
+     cd client
+     npm install
+     ```
+
 
 ## Set up the PostgreSQL database:
 
