@@ -1,5 +1,5 @@
 -- Insert into the User table
-INSERT INTO "User" (firstName, lastName, email, password, role) VALUES 
+INSERT INTO "users" (firstName, lastName, email, password, role) VALUES 
 ('John', 'Doe', 'john.doe@example.com', 'password123', 'mentor'),
 ('Jane', 'Smith', 'jane.smith@example.com', 'securepassword', 'mentor'),
 ('Emily', 'Johnson', 'emily.johnson@example.com', 'passw0rd', 'mentor'),
@@ -12,7 +12,7 @@ INSERT INTO "User" (firstName, lastName, email, password, role) VALUES
 ('Daniel', 'Miller', 'daniel.miller@example.com', 'password555', 'mentor');
 
 -- Insert into the Mentor table
-INSERT INTO "Mentor" (userId, avatar, field, phone, linkedin, github, languages, workplace, linkToSchedule) VALUES 
+INSERT INTO "mentors" (userId, avatar, field, phone, linkedin, github, languages, workplace, linkToSchedule) VALUES 
 (1, 'https://example.com/avatars/john_doe.jpg', 'Software Engineering', '123-456-7890', 'https://linkedin.com/in/johndoe', 'https://github.com/johndoe', 'English, Spanish', 'Tech Corp', 'https://calendly.com/johndoe'),
 (2, 'https://example.com/avatars/jane_smith.jpg', 'Data Science', '234-567-8901', 'https://linkedin.com/in/janesmith', 'https://github.com/janesmith', 'English, French', 'DataX', 'https://calendly.com/janesmith'),
 (3, 'https://example.com/avatars/emily_johnson.jpg', 'Product Management', '345-678-9012', 'https://linkedin.com/in/emilyjohnson', 'https://github.com/emilyjohnson', 'English', 'Innovate Labs', 'https://calendly.com/emilyjohnson'),

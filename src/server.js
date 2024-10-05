@@ -2,7 +2,7 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 5000;
 
 const app = express();
 const pool = require("./config");
@@ -65,6 +65,23 @@ app.post("/submit", (req, res) => {
   });
 });
 
+// Test DB Connection Route
+app.get('/test-db', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT NOW()');
+    res.status(200).json({ message: 'Database connection successful', time: result.rows[0] });
+  } catch (error) {
+    console.error('Error connecting to the database:', error);
+    res.status(500).json({ error: 'Failed to connect to the database' });
+  }
+});
+
+// Fallback route for React
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
+});
+
+
 // Fallback route for React
 app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build", "index.html"));
@@ -72,5 +89,5 @@ app.get("/*", (req, res) => {
 
 // Start the server
 app.listen(port, () => {
-  console.log("Server running on http://localhost:${port}");
+  console.log("Server running on http://localhost:5000");
 });

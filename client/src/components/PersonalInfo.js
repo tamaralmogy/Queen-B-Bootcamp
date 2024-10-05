@@ -79,7 +79,9 @@ function PersonalInfo() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
-    await fetch("http://localhost:5001/submit", {
+
+    // Here is where the backend interaction would go, but it's commented out for now.
+    /* await fetch("http://localhost:5000/submit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -99,34 +101,31 @@ function PersonalInfo() {
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
-        // Reset the form to its initial state after successful submission
-        setFormData(initialFormData);
-        setSubmissionSuccess(true);
-        navigate("/home"); // Redirect to /home after successful submission
+        setFormData(initialFormData); // Reset form data
+        setSubmissionSuccess(true);   // Set success to true
+        navigate("/home");            // Navigate to home
       })
       .catch((error) => {
         console.error("Error:", error);
         setSubmissionSuccess(false);
-      });
+      }); */
+
+    // Simulate success of form submission without the backend
+    setSubmissionSuccess(true); // Always show success popup
   };
 
   return (
     <div className="personal-info-page">
       <div className="form-container">
-        <h1 className="form-title">Mentor Sign-Up </h1> {/* כותרת לטופס */}
+        <h1 className="form-title">Mentor Sign-Up</h1> {/* כותרת לטופס */}
         {submissionSuccess && (
           <div className="popup">
             <div className="popup-content">
               <h2>Form Submitted Successfully!</h2>
-              <p>Thank you for signing up as mentor😍</p>
-              <p>
-                if you want to hear more about opportunities to contribute to
-                Queen-B
-              </p>
-              <p>please follow us on Linked-In:</p>
-              <a href="https://www.linkedin.com/company/queenb">
-                Queen-B LinkedIn
-              </a>
+              <p>Thank you for signing up as mentor 😍</p>
+              <p>If you want to hear more about opportunities to contribute to Queen-B</p>
+              <p>Please follow us on LinkedIn:</p>
+              <a href="https://www.linkedin.com/company/queenb">Queen-B LinkedIn</a>
               <br></br>
               <button onClick={() => setSubmissionSuccess(false)}>Close</button>
             </div>
@@ -140,7 +139,7 @@ function PersonalInfo() {
             formData.fullName,
             handleChange
           )}
-          {createField("field", "text", "field", formData.field, handleChange)}
+          {createField("Field", "text", "field", formData.field, handleChange)}
           {createField("Phone", "tel", "phone", formData.phone, handleChange)}
           {createField(
             "LinkedIn",

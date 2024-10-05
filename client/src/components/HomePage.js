@@ -16,6 +16,8 @@ function HomePage() {
   const [loading, setLoading] = useState(false); // Loading state
   const [error, setError] = useState(null); // Error state
 
+
+
   // Fetch mentors from the backend
   useEffect(() => {
     const fetchMentors = async () => {
@@ -30,9 +32,10 @@ function HomePage() {
           workplace: filters.workplace || "",
         }).toString();
 
-        const response = await axios.get(`/api/mentors?${params}`);
+        const response = await axios.get(`http://localhost:5000/api/mentors?${params}`);
         setMentors(response.data); // Set fetched mentors data
       } catch (error) {
+        console.error(error.response || error.message || error);
         setError("Failed to fetch mentors. Please try again.");
       } finally {
         setLoading(false); // Stop loading after fetch attempt
